@@ -4,6 +4,9 @@
 *.pyc
 *.swp
 .DS_Store
+.env
+.env.*
+!.env.example
 .atom/
 .buildlog/
 .history
@@ -82,6 +85,13 @@ unlinked_spec.ds
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
+
+# macOS/XCode related
+**/macos/Pods/
+**/macos/Flutter/ephemeral/
+**/macos/Flutter/Generated.xcconfig
+**/macos/Flutter/flutter_export_environment.sh
+**/macos/Runner/GeneratedPluginRegistrant.swift
 
 # Coverage
 coverage/
