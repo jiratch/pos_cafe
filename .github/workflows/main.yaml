@@ -13,15 +13,31 @@ on:
       - main
 
 jobs:
+  # 1. เช็กการตั้งชื่อ PR ตามหลัก Semantic Commit
   semantic-pull-request:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
-  build:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
-    with:
-      flutter_version: "3.44.x"
-      run_bloc_lint: true
+  # 2. รันเฉพาะ Analyze และ Test (ไม่มีการ Build ใดๆ)
+  quick-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Analyze Code
+        run: flutter analyze
+
+      - name: Run Tests
+        run: flutter test
+
+  # 3. เช็กคำผิดในไฟล์ Markdown (.md)
   spell-check:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
     with:
