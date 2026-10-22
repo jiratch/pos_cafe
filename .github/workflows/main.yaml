@@ -15,7 +15,7 @@ on:
 jobs:
   # 1. เช็กการตั้งชื่อ PR ตามหลัก Semantic Commit
   semantic-pull-request:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v2
 
   # 2. รันเฉพาะ Analyze และ Test (ไม่มีการ Build ใดๆ)
   quick-check:
